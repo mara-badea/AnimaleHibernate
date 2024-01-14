@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Observatii" table="observatii" catalog="mara" optimistic-lock="version">
+		<id name="idobservatie" type="java.lang.Long">
+			<column name="idobservatie" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="animale" class="pojo.Animale"
+			fetch="select">
+			<column name="idanimal" />
+		</many-to-one>
+		<many-to-one name="caracteristici" class="pojo.Caracteristici"
+			fetch="select">
+			<column name="idcaracteristica" />
+		</many-to-one>
+		<property name="observator" type="string">
+			<column name="observator" length="45" />
+		</property>
+	</class>
+</hibernate-mapping>

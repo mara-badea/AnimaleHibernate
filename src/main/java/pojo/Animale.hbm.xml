@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Animale" table="animale" catalog="mara"
+		optimistic-lock="version">
+		<id name="idanimal" type="java.lang.Long">
+			<column name="idanimal" />
+			<generator class="identity" />
+		</id>
+		<property name="tip" type="string">
+			<column name="tip" length="45" />
+		</property>
+		<property name="familie" type="string">
+			<column name="familie" />
+		</property>
+		<property name="specie" type="string">
+			<column name="specie" length="45" />
+		</property>
+		<property name="sex" type="string">
+			<column name="sex" />
+		</property>
+		<property name="nume" type="string">
+			<column name="nume" />
+		</property>
+		<set name="observatii" table="observatii" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idanimal" />
+			</key>
+			<one-to-many class="pojo.Observatii" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Caracteristici" table="caracteristici" catalog="mara"
+		optimistic-lock="version">
+		<id name="idcaracteristica" type="java.lang.Long">
+			<column name="idcaracteristica" />
+			<generator class="identity" />
+		</id>
+		<property name="numeCaracteristica" type="string">
+			<column name="nume" length="45" />
+		</property>
+		<property name="detalii" type="string">
+			<column name="detalii" length="45" />
+		</property>
+		<property name="FrecventaAparitie" type="float">
+			<column name="frecventa_aparitie" length="45" />
+		</property>
+		<set name="observatii" table="observatii" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idcaracteristica" />
+			</key>
+			<one-to-many class="pojo.Observatii" />
+		</set>
+	</class>
+</hibernate-mapping>
